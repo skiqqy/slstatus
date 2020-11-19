@@ -63,13 +63,18 @@ static const char unknown_str[] = "n/a";
  */
 static const struct arg args[] = {
 	/* function format          argument */
+
+	/* Calcurse */
+	{ run_command, "[%s] ",
+	"[ $(command -v salcurse) ] && calcurse -n | cut -d$'\n' -f 2 | sed -e 's/^[ ]*//;s/\\[//g;s/\\]//g'"
+	"|| echo \"<ERROR> calcurse is missing <ERROR>\""},
 	
 	/* Date */
 	{ datetime, "[%s] ", "%F %T" },
 
 	/* WiFi */
 	{ wifi_essid, "[%s", "wlo1" },
-	{ wifi_perc, "%s\%] ", "wlo1" },
+	{ wifi_perc, "%s%] ", "wlo1" },
 
 	/* Battery */
 	{ battery_perc, "[%s", "BAT0" },
