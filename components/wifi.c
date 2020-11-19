@@ -5,6 +5,7 @@
 #include <sys/ioctl.h>
 #include <sys/socket.h>
 #include <unistd.h>
+#include <stdlib.h>
 
 #include "../util.h"
 
@@ -20,9 +21,9 @@
 	const char *
 	wifi_perc(const char *interface)
 	{
-		int cur;
+		int cur, k;
 		size_t i;
-		char *p, *datastart;
+		char *p, *datastart, *ret;
 		char path[PATH_MAX];
 		char status[5];
 		FILE *fp;
@@ -64,7 +65,12 @@
 		       "%*d\t\t%*d\t\t %*d\t  %*d\t\t %*d", &cur);
 
 		/* 70 is the max of /proc/net/wireless */
-		return bprintf("%d", (int)((float)cur / 70 * 100));
+		ret = malloc(sizeof(char)*6);
+		for (k = 0; k < (int)((float)cur/70*5); k++) {
+			ret[k] = '-';
+		}
+		ret[k] = 0;
+		return ret;
 	}
 
 	const char *
