@@ -66,7 +66,7 @@ static const struct arg args[] = {
 
 	/* Calcurse */
 	{ run_command, "[%s] ",
-	"[ $(command -v salcurse) ] && calcurse -n | cut -d$'\n' -f 2 | sed -e 's/^[ ]*//;s/\\[//g;s/\\]//g'"
+	"[ $(command -v calcurse) ] && calcurse -n | cut -d$'\n' -f 2 | sed -e 's/^[ ]*//;s/\\[//g;s/\\]//g'"
 	"|| echo \"<ERROR> calcurse is missing <ERROR>\""},
 	
 	/* Date */
