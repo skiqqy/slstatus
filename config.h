@@ -76,6 +76,10 @@ static const struct arg args[] = {
 	{ wifi_essid, "[%s", "wlo1" },
 	{ wifi_perc, "%s] ", "wlo1" },
 
+	/* RAM Info */
+	{ ram_free, "[%s/", NULL },
+	{ ram_total, "%s] ", NULL },
+
 	/* Battery */
 	{ battery_perc, "[%s", "BAT0" },
 	{ battery_state, "%s]", "BAT0" },
